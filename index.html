@@ -287,6 +287,7 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
       </div>
     </div>
     <div class="subsection-title">Re-stream Pattern — within 21 days of first stream</div>
+    <div id="drivers-overview"></div>
     <div id="restream-overview"><p class="section-caption" style="color:var(--muted)">Run Q8 and share results to enable this section.</p></div>
 
   <details class="metric-defs">
@@ -361,6 +362,7 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
       </table>
     </div>
     <div class="subsection-title">Re-stream Pattern — within 21 days of first stream</div>
+    <div id="drivers-comp"></div>
     <div id="restream-comp"><p class="section-caption" style="color:var(--muted)">Run Q8 and share results to enable this section.</p></div>
 
   <details class="metric-defs">
@@ -423,6 +425,7 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
 
     <div id="buckets-container"></div>
     <div class="subsection-title">Re-stream Pattern — within 21 days of first stream</div>
+    <div id="drivers-buckets"></div>
     <div id="restream-buckets"><p class="section-caption" style="color:var(--muted)">Run Q8 and share results to enable this section.</p></div>
 
   <details class="metric-defs">
@@ -498,6 +501,7 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
       </table>
     </div>
     <div class="subsection-title">Re-stream Pattern — within 21 days of first stream</div>
+    <div id="drivers-weekly"></div>
     <div id="restream-weekly"><p class="section-caption" style="color:var(--muted)">Run Q8 and share results to enable this section.</p></div>
 
   <details class="metric-defs">
@@ -1077,12 +1081,23 @@ const TOP_CATS = ["Collectables", "Sports Mem, Cards & Fan Shop", "Clothing, Sho
 const CATS_BY_COUNTRY = {"AU":["Antiques","Books, Comics & Magazines","Clothing, Shoes & Accessories","Coins","Collectables","Crafts","Health & Beauty","Home Appliances","Industrial","Jewellery & Watches","Lots More...","Movies & TV","Music","Sporting Goods","Toys & Hobbies","Video Games & Consoles"],"CA":["Coins & Paper Money","Collectibles","Sports Mem, Cards & Fan Shop","Toys & Hobbies"],"DE":["Antiquitäten & Kunst","Auto & Motorrad: Teile","Bastel- & Künstlerbedarf","Beauty & Gesundheit","Business & Industrie","Computer, Tablets & Netzwerk","Filme & Serien","Garten & Terrasse","Handys & Kommunikation","Haushaltsgeräte","Heimwerker","Kleidung & Accessoires","Modellbau","Möbel & Wohnen","Münzen","PC- & Videospiele","Sammeln & Seltenes","Spielzeug","Sport","TV, Video & Audio","Uhren & Schmuck","Verschiedenes"],"FR":["Art, antiquités","Bijoux, montres","Collections","Céramiques, verres","DVD, cinéma","Jeux vidéo, consoles","Jouets et jeux","Monnaies","Musique, CD, vinyles","Sports, vacances","Téléphonie, mobilité","Vêtements, accessoires"],"IT":["Abbigliamento e accessori","Altre categorie","Arte e antiquariato","Bellezza e salute","Casa, arredamento e bricolage","Collezionismo","Everything Else","Francobolli","Fumetti e memorabilia","Giocattoli e modellismo","Monete e banconote","Orologi e gioielli","Videogiochi e console"],"Other Countries":["Antiques","Cameras & Photo","Clothes, Shoes & Accessories","Clothing, Shoes & Accessories","Collectibles","Health & Beauty","Home & Garden","Jewelry & Watches","Kleidung & Accessoires","Sammeln & Seltenes","Toys & Hobbies","Uhren & Schmuck"],"UK":["Antiques","Baby","Books, Comics & Magazines","Cameras & Photography","Clothes, Shoes & Accessories","Coins","Collectables","Computers/Tablets & Networking","Crafts","Everything Else","Films & TV","Garden & Patio","Health & Beauty","Home, Furniture & DIY","Jewellery & Watches","Mobile Phones & Communication","Music","Musical Instruments & DJ Equipment","Pet Supplies","Pottery, Ceramics & Glass","Sound & Vision","Sporting Goods","Sports Memorabilia","Toys & Games","Vehicle Parts & Accessories","Video Games & Consoles","Wholesale & Job Lots"],"US":["Antiques","Art","Books & Magazines","Business & Industrial","Cell Phones & Accessories","Clothing, Shoes & Accessories","Coins & Paper Money","Collectibles","Computers/Tablets & Networking","Consumer Electronics","Crafts","Entertainment Memorabilia","Everything Else","Health & Beauty","Home & Garden","Jewelry & Watches","Movies & TV","Music","Sporting Goods","Sports Mem, Cards & Fan Shop","Toys & Hobbies","Video Games & Consoles","eBay Motors"]};
 
 /* ══════════════════════════════════════════════
+   Q9 — First-stream profile by re-stream timing bucket
+══════════════════════════════════════════════ */
+const Q9_DATA = [
+  {restream_bucket:"1_0-7",  sellers:2243, pct_converted:89.4, avg_duration_min:160.2, med_duration_min:128.4, avg_viewers:635.6,  med_viewers:312, avg_unique_viewers:800.7, med_unique_viewers:389, avg_buyers:3.9, med_buyers:2, avg_chat:450.4, med_chat:204, avg_likes:4975.4, med_likes:628, avg_items_sold:65.3, med_items_sold:43, avg_gmv:3866.71, med_gmv:818.08},
+  {restream_bucket:"2_8-15", sellers:258,  pct_converted:87.6, avg_duration_min:132.4, med_duration_min:99.3,  avg_viewers:663.2,  med_viewers:259, avg_unique_viewers:788.4, med_unique_viewers:331, avg_buyers:4.1, med_buyers:2, avg_chat:270.4, med_chat:130, avg_likes:1900.0, med_likes:432, avg_items_sold:39.9, med_items_sold:22, avg_gmv:4317.73, med_gmv:549.17},
+  {restream_bucket:"3_16-21",sellers:180,  pct_converted:84.4, avg_duration_min:146.7, med_duration_min:77.1,  avg_viewers:818.9,  med_viewers:207, avg_unique_viewers:949.8, med_unique_viewers:244, avg_buyers:5.3, med_buyers:2, avg_chat:271.2, med_chat:117, avg_likes:5607.7, med_likes:311, avg_items_sold:41.4, med_items_sold:22, avg_gmv:3596.67, med_gmv:450.87},
+  {restream_bucket:"4_21plus",sellers:443,  pct_converted:75.6, avg_duration_min:98.8,  med_duration_min:69.5,  avg_viewers:527.7,  med_viewers:154, avg_unique_viewers:538.9, med_unique_viewers:99,  avg_buyers:8.2, med_buyers:1, avg_chat:154.6, med_chat:35,  avg_likes:1274.8, med_likes:11,  avg_items_sold:58.0, med_items_sold:18, avg_gmv:2783.54, med_gmv:352.44},
+];
+
+/* ══════════════════════════════════════════════
    STATE
 ══════════════════════════════════════════════ */
 const STATE = {
   q5: Q5_DATA,
   q6: Q6_DATA,
   q8: Q8_DATA,
+  q9: Q9_DATA,
   filters: {
     overview: {country:"All", category:"All"},
     comp:     {country:"All", category:"All"},
@@ -1189,6 +1204,102 @@ function getQ6Filtered(){
     (category==="All" || r.category===category)
   );
 }
+
+const Q9_METRIC_META = [
+  {key:'pct_converted',     label:'% converted on 1st stream',     fmt:'pct',   grp:'Conversion'},
+  {key:'avg_duration_min',  label:'Duration — avg (min)',           fmt:'num1',  grp:'Duration'},
+  {key:'med_duration_min',  label:'Duration — median (min)',        fmt:'num1',  grp:'Duration'},
+  {key:'avg_viewers',       label:'Viewers — avg',                  fmt:'num1',  grp:'Viewers'},
+  {key:'med_viewers',       label:'Viewers — median',               fmt:'num1',  grp:'Viewers'},
+  {key:'avg_unique_viewers',label:'Unique viewers — avg',           fmt:'num1',  grp:'Viewers'},
+  {key:'avg_buyers',        label:'Buyers — avg',                   fmt:'num1',  grp:'Buyers'},
+  {key:'med_buyers',        label:'Buyers — median',                fmt:'num1',  grp:'Buyers'},
+  {key:'avg_chat',          label:'Chat messages — avg',            fmt:'num1',  grp:'Chat'},
+  {key:'med_chat',          label:'Chat messages — median',         fmt:'num1',  grp:'Chat'},
+  {key:'avg_likes',         label:'Likes — avg',                    fmt:'num1',  grp:'Likes'},
+  {key:'med_likes',         label:'Likes — median',                 fmt:'num1',  grp:'Likes'},
+  {key:'avg_items_sold',    label:'Items sold — avg (converters)',  fmt:'num1',  grp:'Items sold'},
+  {key:'med_items_sold',    label:'Items sold — median (converters)',fmt:'num1', grp:'Items sold'},
+  {key:'avg_gmv',           label:'GMV — avg / converter ($)',      fmt:'$num0', grp:'GMV'},
+  {key:'med_gmv',           label:'GMV — median / converter ($)',   fmt:'$num0', grp:'GMV'},
+];
+
+function renderDrivers(rows, containerId){
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  if(!rows || !rows.length){ el.innerHTML=''; return; }
+
+  const byBkt = {};
+  rows.forEach(r => { byBkt[r.restream_bucket] = r; });
+  const BKTS    = ['1_0-7','2_8-15','3_16-21','4_21plus'];
+  const BLABELS = {'1_0-7':'0–7 days','2_8-15':'8–15 days','3_16-21':'16–21 days','4_21plus':'21+ / never'};
+  const BCLS    = {'1_0-7':'chip hi','2_8-15':'chip md','3_16-21':'chip lo','4_21plus':'chip'};
+
+  function fmtV(v, f){
+    if(v===null||v===undefined||isNaN(v)) return '—';
+    if(f==='pct')   return (+v).toFixed(1)+'%';
+    if(f==='$num0') return '$'+Math.round(v).toLocaleString();
+    return (+v).toLocaleString('en-US',{maximumFractionDigits:1});
+  }
+
+  function heat(v, mn, mx){
+    if(v===null||v===undefined||isNaN(v)) return '';
+    const t = mx===mn ? 0.5 : (v-mn)/(mx-mn);
+    return 'background:rgba('
+      +Math.round(229+(134-229)*t)+','
+      +Math.round(50 +(184-50 )*t)+','
+      +Math.round(56 +(23 -56 )*t)+','
+      +(0.08+t*0.22).toFixed(2)+')';
+  }
+
+  const sellerCells = BKTS.map(b=>{
+    const d=byBkt[b];
+    return '<td class="r" style="font-weight:600">'+(d ? (+d.sellers).toLocaleString() : '—')+'</td>';
+  }).join('');
+
+  let lastGrp = null;
+  const metricRows = Q9_METRIC_META.map(m=>{
+    const vals = BKTS.map(b=>{ const d=byBkt[b]; return d?(d[m.key]??null):null; });
+    const nums = vals.filter(v=>v!==null&&!isNaN(v));
+    const mn=nums.length?Math.min(...nums):0, mx=nums.length?Math.max(...nums):0;
+    const v07=byBkt['1_0-7']   ? byBkt['1_0-7'][m.key]   : null;
+    const v21=byBkt['4_21plus'] ? byBkt['4_21plus'][m.key] : null;
+    let ds='—';
+    if(v07!==null && v21!==null){
+      if(m.fmt==='pct'){
+        const pp=v07-v21;
+        ds='<span class="delta '+(pp>=0?'pos':'neg')+'">'+(pp>=0?'+':'')+pp.toFixed(1)+' pp</span>';
+      } else if(v21>0){
+        const p=Math.round((v07-v21)/v21*100);
+        ds='<span class="delta '+(p>=0?'pos':'neg')+'">'+(p>=0?'+':'')+p+'%</span>';
+      } else if(v07>0){
+        ds='<span class="delta pos">∞</span>';
+      }
+    }
+    const cells=vals.map(v=>'<td class="r" style="'+heat(v,mn,mx)+'">'+fmtV(v,m.fmt)+'</td>').join('');
+    let grpRow='';
+    if(m.grp!==lastGrp){
+      lastGrp=m.grp;
+      grpRow='<tr style="background:#F4F6FA"><td colspan="'+(BKTS.length+2)+'" style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:7px 12px">'+m.grp+'</td></tr>';
+    }
+    return grpRow+'<tr><td style="padding-left:20px;font-size:12.5px">'+m.label+'</td>'+cells+'<td class="r" style="font-size:12px">'+ds+'</td></tr>';
+  }).join('');
+
+  const hdrs=BKTS.map(b=>'<th class="r"><span class="'+BCLS[b]+'">'+BLABELS[b]+'</span></th>').join('');
+
+  el.innerHTML=
+    '<div class="subsection-title" style="margin-top:24px">First-Stream Signal Profile by Re-stream Timing</div>'
+    +'<p class="section-caption">Which first-stream signals predict how quickly a seller returns? '
+    +'Δ = difference between the 0–7 day group and the 21+/never group. '
+    +'Metric with the largest positive Δ is the strongest retention driver. '
+    +'Heat: darker green = higher value within that metric row. All-market view — country/category filters do not affect this table.</p>'
+    +'<div class="tbl-wrap"><table class="tbl"><thead>'
+    +'<tr><th>Metric</th>'+hdrs+'<th class="r" style="min-width:90px">Δ (0–7 vs 21+)</th></tr>'
+    +'<tr style="background:#EEF2F8"><td style="font-size:11px;font-weight:700;color:var(--muted);padding:6px 12px">SELLERS IN BUCKET</td>'
+    +sellerCells+'<td></td></tr>'
+    +'</thead><tbody>'+metricRows+'</tbody></table></div>';
+}
+
 function getQ8Filtered(tabId){
   if(!STATE.q8) return null;
   const {country,category} = STATE.filters[tabId];
@@ -1429,6 +1540,10 @@ function refreshTab(tabId){
   if(STATE.q8 && ["overview","comp","weekly","buckets"].includes(tabId)){
     const q8rows = getQ8Filtered(tabId);
     renderRestream(q8rows && q8rows.length ? q8ToRestream(q8rows) : [], "restream-"+tabId);
+  }
+  // Metric driver analysis — all-market, not filtered
+  if(STATE.q9 && ["overview","comp","weekly","buckets"].includes(tabId)){
+    renderDrivers(STATE.q9, "drivers-"+tabId);
   }
 }
 
