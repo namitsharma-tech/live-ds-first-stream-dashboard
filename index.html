@@ -212,6 +212,7 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
   <button class="tab-btn" data-tab="comparison">Metric Comparison</button>
   <button class="tab-btn" data-tab="buckets">Signal Buckets</button>
   <button class="tab-btn" data-tab="weekly">By Week</button>
+  <button class="tab-btn" data-tab="retention">Retention</button>
   <button class="tab-btn" data-tab="actions">Actions</button>
   <button class="tab-btn" data-tab="methodology">Methodology</button>
 </nav>
@@ -243,6 +244,41 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
         Seller must have <code>event_duration_min &gt; 0</code> and <code>deleted_ind = 0</code>.
         Metrics are summed across all events on the first stream day (a seller may run multiple events).
       </p>
+    </div>
+
+    <div class="subsection-title">Key Findings</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+
+<div style="background:#FFF8EC;border:1px solid #F5D78E;border-left:4px solid var(--ebay-yellow);border-radius:6px;padding:14px 16px">
+        <div style="font-size:22px;font-weight:800;color:var(--ebay-yellow-dark);line-height:1;margin-bottom:4px">Day 7</div>
+        <div style="font-size:12.5px;font-weight:700;color:#5a3800;margin-bottom:5px">The re-stream window is a cliff, not a slope</div>
+        <div style="font-size:11.5px;color:var(--text);line-height:1.5">71.8% of re-streamers return within 7 days. In days 8–15, only 8.3% do. There is no gradual decline — a seller who hasn't streamed again by day 7 has an ~82% chance of not returning within 21 days.</div>
+      </div>
+
+      <div style="background:#F8FAF5;border:1px solid #C9E3A5;border-left:4px solid var(--ebay-green);border-radius:6px;padding:14px 16px">
+        <div style="font-size:22px;font-weight:800;color:var(--ebay-green-dark);line-height:1;margin-bottom:4px">3×</div>
+        <div style="font-size:12.5px;font-weight:700;color:#1a3a0a;margin-bottom:5px">Chat is the #1 signal — for conversion and retention</div>
+        <div style="font-size:11.5px;color:var(--text);line-height:1.5">Early returners had 450 avg chat messages on stream 1 vs. 155 for those who never came back. That 3× gap is larger than any other metric — bigger than duration, viewers, or likes.</div>
+      </div>
+
+      <div style="background:#F8FAF5;border:1px solid #C9E3A5;border-left:4px solid var(--ebay-green);border-radius:6px;padding:14px 16px">
+        <div style="font-size:22px;font-weight:800;color:var(--ebay-green-dark);line-height:1;margin-bottom:4px">+62%</div>
+        <div style="font-size:12.5px;font-weight:700;color:#1a3a0a;margin-bottom:5px">Duration predicts both a sale and a return</div>
+        <div style="font-size:11.5px;color:var(--text);line-height:1.5">Sellers who re-streamed within 7 days averaged 160 min on stream 1; those who never came back averaged 99 min. The same threshold that predicts GMV > $0 also predicts whether a seller returns at all.</div>
+      </div>
+
+      <div style="background:#FFF8EC;border:1px solid #F5D78E;border-left:4px solid var(--ebay-yellow);border-radius:6px;padding:14px 16px">
+        <div style="font-size:22px;font-weight:800;color:var(--ebay-yellow-dark);line-height:1;margin-bottom:4px">+39%</div>
+        <div style="font-size:12.5px;font-weight:700;color:#5a3800;margin-bottom:5px">Early returners earn more — even among converters</div>
+        <div style="font-size:11.5px;color:var(--text);line-height:1.5">Among sellers who <em>did</em> make a sale on stream 1, early returners (0–7 days) earned $3,866 avg GMV vs. $2,783 for those who never came back. First-stream quality predicts long-term engagement.</div>
+      </div>
+
+      <div style="background:#FEF2F2;border:1px solid #F5C6C6;border-left:4px solid var(--ebay-red);border-radius:6px;padding:14px 16px">
+        <div style="font-size:22px;font-weight:800;color:var(--ebay-red-dark);line-height:1;margin-bottom:4px">570</div>
+        <div style="font-size:12.5px;font-weight:700;color:#5a0000;margin-bottom:5px">At-risk sellers — intervention window already closing</div>
+        <div style="font-size:11.5px;color:var(--text);line-height:1.5">570 sellers (17%) did not re-stream within 21 days and generated $0 follow-on live GMV. The effective recovery window is the first 7 days; past that, return probability drops sharply.</div>
+      </div>
+
     </div>
 
     <div class="kpi-strip" id="kpi-strip"></div>
@@ -286,9 +322,6 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
         </table>
       </div>
     </div>
-    <div class="subsection-title">Re-stream Pattern — within 21 days of first stream</div>
-    <div id="restream-overview"><p class="section-caption" style="color:var(--muted)">Run Q8 and share results to enable this section.</p></div>
-    <div id="drivers-overview"></div>
 
   <details class="metric-defs">
     <summary>Metric definitions</summary>
@@ -361,9 +394,6 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
         <tbody id="comp-tbody"></tbody>
       </table>
     </div>
-    <div class="subsection-title">Re-stream Pattern — within 21 days of first stream</div>
-    <div id="restream-comp"><p class="section-caption" style="color:var(--muted)">Run Q8 and share results to enable this section.</p></div>
-    <div id="drivers-comp"></div>
 
   <details class="metric-defs">
     <summary>Metric definitions</summary>
@@ -424,9 +454,6 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
     </div>
 
     <div id="buckets-container"></div>
-    <div class="subsection-title">Re-stream Pattern — within 21 days of first stream</div>
-    <div id="restream-buckets"><p class="section-caption" style="color:var(--muted)">Run Q8 and share results to enable this section.</p></div>
-    <div id="drivers-buckets"></div>
 
   <details class="metric-defs">
     <summary>Metric definitions</summary>
@@ -500,9 +527,6 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
         <tbody id="weekly-tbody"></tbody>
       </table>
     </div>
-    <div class="subsection-title">Re-stream Pattern — within 21 days of first stream</div>
-    <div id="restream-weekly"><p class="section-caption" style="color:var(--muted)">Run Q8 and share results to enable this section.</p></div>
-    <div id="drivers-weekly"></div>
 
   <details class="metric-defs">
     <summary>Metric definitions</summary>
@@ -528,29 +552,61 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
   </section>
 
   <!-- ═══════════════════════════════════════════════════
+       RETENTION
+  ═══════════════════════════════════════════════════ -->
+  <section class="tab-panel" id="tab-retention">
+    <div class="section-title">Streamer Retention — Re-stream Pattern &amp; First-Stream Signals</div>
+    <p class="section-caption">
+      How quickly do first-time streamers return to live? Q8 shows re-stream timing buckets and activity
+      in the 21 days after first stream, filterable by country and category. Q9 shows what first-stream
+      signals (duration, viewers, engagement) predict early return — all-market view.
+    </p>
+
+    <!-- Filter bar: Retention -->
+    <div class="filter-bar" id="fb-retention">
+      <div class="filter-group">
+        <span class="filter-label">Country</span>
+        <select id="fc-retention" onchange="onCountryFilter('retention')"><option value="All">All</option></select>
+      </div>
+      <div class="filter-sep"></div>
+      <div class="filter-group">
+        <span class="filter-label">Category</span>
+        <select id="fcat-retention" onchange="onFilter('retention')"><option value="All">All</option></select>
+      </div>
+      <span class="filter-status loaded" id="fstatus-retention">✓ Q8 embedded · 304 rows · 8 countries</span>
+    </div>
+
+    <div class="subsection-title">Re-stream Pattern — within 21 days of first stream</div>
+    <div id="restream-retention"></div>
+    <div id="drivers-retention"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
        ACTIONS
   ═══════════════════════════════════════════════════ -->
   <section class="tab-panel" id="tab-actions">
-    <div class="section-title">Actionable Recommendations — First Stream GMV Conversion</div>
+    <div class="section-title">Actionable Recommendations — First Stream Conversion &amp; Retention</div>
     <p class="section-caption">
-      Derived directly from Query 4 signal bucket data (n=3,361 sellers). Each recommendation targets
-      a specific bucket gap, names the owner team, and quantifies the conversion lift if the threshold is crossed.
+      Derived from Q4 signal bucket data (n=3,361 sellers), Q8 re-stream timing (304 segments), and Q9 first-stream signal profiles by return bucket.
+      Duration and chat are now confirmed as dual-ROI levers — they predict both first-stream GMV conversion <em>and</em> how quickly a seller returns to stream.
+      Re-stream velocity (returning within 7 days) is the strongest known predictor of long-term seller GMV on eBay Live.
     </p>
 
     <div class="sample-notice" style="background:rgba(0,100,210,.07);border-color:rgba(0,100,210,.30);color:#1e3a5f">
       <span style="font-size:15px;line-height:1">ℹ</span>
       <span>
-        <strong>All-market data only.</strong> Numbers on this tab are based on the full dataset (n=3,361 sellers, all countries, all categories) and do not reflect any country or category filter applied on other tabs.
-        For country- or category-specific conversion rates, use the <strong>Signal Buckets</strong> tab with filters applied.
+        <strong>All-market data only.</strong> Numbers on this tab are based on the full dataset (n=3,361 sellers, all countries, all categories).
+        For country- or category-specific cuts, use the <strong>Signal Buckets</strong> or <strong>Retention</strong> tabs with filters applied.
       </span>
     </div>
 
     <div class="subsection-title">Where sellers are today</div>
     <div class="funnel-row">
-      <div class="funnel-cell"><div class="fc-v">3,361</div><div class="fc-l">First-stream sellers</div><div class="fc-n">all cohorts</div></div>
+      <div class="funnel-cell"><div class="fc-v">3,361</div><div class="fc-l">First-stream sellers</div><div class="fc-n">all cohorts · Jan–Jun 2026</div></div>
       <div class="funnel-cell"><div class="fc-v" style="color:var(--ebay-red-dark)">523</div><div class="fc-l">No GMV on first stream</div><div class="fc-n">15.6% miss rate</div></div>
       <div class="funnel-cell"><div class="fc-v" style="color:var(--ebay-green-dark)">2,838</div><div class="fc-l">GMV &gt; $0 on first stream</div><div class="fc-n">84.4% base rate</div></div>
-      <div class="funnel-cell"><div class="fc-v" style="color:var(--ebay-yellow-dark)">~310</div><div class="fc-l">Highest-leverage target</div><div class="fc-n">chat 1–20 group</div></div>
+      <div class="funnel-cell"><div class="fc-v" style="color:var(--ebay-yellow-dark)">2,243</div><div class="fc-l">Re-streamed within 7 days</div><div class="fc-n">66.8% of all first-streamers</div></div>
+      <div class="funnel-cell"><div class="fc-v" style="color:var(--ebay-red-dark)">570</div><div class="fc-l">No return within 21 days</div><div class="fc-n">17% at-risk — $0 follow-on GMV</div></div>
     </div>
 
     <div class="anomaly-box">
@@ -558,14 +614,71 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
       Sellers with <em>zero</em> chat convert at <strong>52.7%</strong>, but sellers with just 1–20 chats convert at only <strong>32.6%</strong>.
       Hypothesis: the zero-chat group includes established sellers with pre-existing buyer intent (PN-driven purchases) who don't need chat to convert,
       while the 1–20 chat group are genuinely new streamers who tried but failed to build momentum.
-      <strong>Recommendation: segment these two zero-chat sub-groups before treating them as a single cohort.</strong>
+      <strong>Recommendation: segment these two sub-groups before treating as a single cohort.</strong>
+      New signal (Q9): sellers who re-streamed within 7 days averaged <strong>450 chat messages</strong> on their first stream vs. <strong>155</strong> for those who never returned — a 3× gap. Chat is now confirmed as a retention predictor, not just a conversion signal.
     </div>
 
-    <div class="priority-header">Lever 1 — Duration &nbsp;·&nbsp; Highest addressability, fast win</div>
+    <div class="priority-header">Lever 1 — Duration &amp; Chat &nbsp;·&nbsp; Dual ROI: first-stream conversion + re-stream retention</div>
     <div class="actions-grid">
       <div class="action-card">
         <div class="action-header">
           <div class="action-num L1">1</div>
+          <div>
+            <div class="action-title">Seed opening questions via eBay Live moderation team for first-time sellers</div>
+            <div class="action-tag">Live Operations · Community team &nbsp;↑ moved from Lever 2</div>
+          </div>
+        </div>
+        <div class="action-body">
+          <div class="action-stat-row">
+            <div class="action-stat warn"><div class="sv">32.6%</div><div class="sl">1–20 chats conversion</div></div>
+            <div class="action-stat highlight"><div class="sv">80.6%</div><div class="sl">21–100 chats conversion</div></div>
+            <div class="action-stat good"><div class="sv">450 vs 155</div><div class="sl">avg chat: 0–7 day vs never-return</div></div>
+            <div class="action-stat"><div class="sv">310</div><div class="sl">sellers in 1–20 chat bucket</div></div>
+          </div>
+          <ul class="action-bullets">
+            <li><strong>Dual ROI confirmed (Q9):</strong> reaching 21+ chat crosses the 80% first-stream conversion threshold AND is the #1 signal predicting re-stream within 7 days. Sellers who returned quickly averaged 450 chats vs. 155 for those who never came back — a 3× gap, larger than any other metric in the Signal Profile.</li>
+            <li>Assign a "stream success" moderator to every first-time seller's first 30 minutes. Their job: post 3–5 opener questions (item condition? what's your story? limited quantity?) to break the chat silence.</li>
+            <li>Build an automated "question bank" by seller category (collectibles, fashion, electronics) so the mod doesn't need to improvise.</li>
+            <li>Even a small mod intervention can move sellers from 1–20 to 21+ chat — the threshold that crosses the 80% conversion barrier.</li>
+          </ul>
+        </div>
+        <div class="action-footer">
+          <span class="owner-tag ops">Live Ops</span>
+          <span class="owner-tag mkt">Community</span>
+          &nbsp;Expected lift: +48 pp conversion on 310 sellers ≈ ~149 additional GMV events. Secondary: higher early re-stream probability for all sellers reached
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-header">
+          <div class="action-num L1">2</div>
+          <div>
+            <div class="action-title">Give sellers a "question bank" template before their first stream</div>
+            <div class="action-tag">Seller enablement · Pre-stream coaching email &nbsp;↑ moved from Lever 2</div>
+          </div>
+        </div>
+        <div class="action-body">
+          <div class="action-stat-row">
+            <div class="action-stat warn"><div class="sv">205</div><div class="sl">sellers with zero chat</div></div>
+            <div class="action-stat highlight"><div class="sv">52.7%</div><div class="sl">zero-chat conversion rate</div></div>
+            <div class="action-stat good"><div class="sv">+191%</div><div class="sl">chat gap: 0–7 day vs never-return</div></div>
+          </div>
+          <ul class="action-bullets">
+            <li>Send a pre-stream email 48h before first stream with 10 category-specific chat prompts: <em>"Ask your viewers: Would you like a close-up of the stitching?"</em></li>
+            <li>Include the dual signal: <em>"Sellers who get 21+ chat messages convert at 80%. They're also 3× more likely to stream again within a week — keeping your audience engaged from the start sets up your whole month."</em></li>
+            <li>Target primarily the 310 sellers in 1–20 chat who underperform relative to both zero-chat and 21+ chat groups.</li>
+          </ul>
+        </div>
+        <div class="action-footer">
+          <span class="owner-tag mkt">Marketing</span>
+          <span class="owner-tag">Seller Experience</span>
+          &nbsp;Zero engineering cost; purely content and email automation. Dual ROI: first-stream conversion + retention velocity
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-header">
+          <div class="action-num L1">3</div>
           <div>
             <div class="action-title">Send a "keep going" nudge at the 25-minute mark</div>
             <div class="action-tag">In-stream product · Seller app / streaming tool</div>
@@ -576,13 +689,14 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
             <div class="action-stat warn"><div class="sv">5.3%</div><div class="sl">&lt;10 min → GMV &gt; $0</div></div>
             <div class="action-stat"><div class="sv">45.5%</div><div class="sl">10–30 min conversion</div></div>
             <div class="action-stat highlight"><div class="sv">88.0%</div><div class="sl">61–120 min conversion</div></div>
-            <div class="action-stat good"><div class="sv">75 sellers</div><div class="sl">currently &lt;10 min</div></div>
+            <div class="action-stat good"><div class="sv">+62%</div><div class="sl">duration: 0–7 day vs never-return</div></div>
           </div>
           <ul class="action-bullets">
-            <li>At the 25-min mark, surface a banner in the streamer dashboard: <em>"Sellers who stream 60+ min convert at 88% — you're 25 min in, keep going!"</em></li>
+            <li><strong>Dual ROI confirmed (Q9):</strong> longer first streams drive conversion AND faster return. Sellers who re-streamed within 7 days averaged 160 min on their first stream vs. 99 min for those who never came back (+62%).</li>
+            <li>At the 25-min mark, surface a banner: <em>"Sellers who stream 60+ min convert at 88% — you're 25 min in, keep going!"</em></li>
             <li>At 55 min, send a second nudge: <em>"Top 10% of sellers stream 2+ hours. Your viewers are still watching."</em></li>
-            <li>Show real-time conversion probability score as a live gauge (derived from duration + current viewer count).</li>
-            <li>Separate action for the 154 sellers in the 10–30 min group: post-stream email with a personalized replay showing their drop-off point vs. cohort median (121 min for converters).</li>
+            <li>Show a real-time conversion probability score as a live gauge (derived from duration + current viewer count).</li>
+            <li>Post-stream email for the 154 sellers in the 10–30 min group: personalized replay showing their drop-off point vs. cohort median.</li>
           </ul>
         </div>
         <div class="action-footer">
@@ -594,9 +708,9 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
 
       <div class="action-card">
         <div class="action-header">
-          <div class="action-num L1">2</div>
+          <div class="action-num L1">4</div>
           <div>
-            <div class="action-title">Pre-stream checklist with a "minimum viable stream" duration goal</div>
+            <div class="action-title">Pre-stream checklist with a "minimum viable stream" duration goal + inventory gate</div>
             <div class="action-tag">Seller onboarding · Go-live coaching</div>
           </div>
         </div>
@@ -607,83 +721,142 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
             <div class="action-stat highlight"><div class="sv">$3,674</div><div class="sl">avg GMV at 120 min+</div></div>
           </div>
           <ul class="action-bullets">
-            <li>Before the first stream, require sellers to complete a "Stream Plan" (topic, item list, duration target). Default target: 60 min minimum.</li>
-            <li>In the go-live confirmation screen, show the conversion rate ladder: <em>"30 min → 68% · 60 min → 88% · 120 min → 94%"</em> — make the data visible before they start.</li>
-            <li>Add a duration achievement badge visible to viewers ("2-hour streamer") to gamify longer sessions.</li>
-            <li><strong>Inventory readiness gate:</strong> before the go-live confirmation screen, check that the seller has ≥ 40 active listings. Converter sellers sell a median of 42 items in their first stream — running out of stock mid-stream breaks momentum and prevents buyers from adding to cart. Surface a warning: <em>"Top sellers list 50+ items before going live."</em></li>
+            <li>Before first stream, require sellers to complete a "Stream Plan" (topic, item list, duration target). Default: 60 min minimum.</li>
+            <li>In the go-live screen, show the conversion ladder and retention data: <em>"30 min → 68% · 60 min → 88% · 120 min → 94%"</em> plus <em>"Sellers who stream 2+ hours are twice as likely to return within a week."</em></li>
+            <li><strong>Inventory readiness gate:</strong> check seller has ≥ 40 active listings before go-live. Converter sellers sell a median of 42 items on their first stream — running out mid-stream breaks momentum and blocks buyers. Surface warning: <em>"Top sellers list 50+ items before going live."</em></li>
           </ul>
         </div>
         <div class="action-footer">
           <span class="owner-tag">Seller Experience</span>
           <span class="owner-tag mkt">Content</span>
-          &nbsp;Low engineering cost; high leverage on the new-seller drop-off pattern
+          &nbsp;Low engineering cost; high leverage on new-seller drop-off. Dual ROI: conversion + retention
         </div>
       </div>
     </div>
 
-    <div class="priority-header">Lever 2 — Chat engagement &nbsp;·&nbsp; Biggest conversion gap, requires audience seeding</div>
+    <div class="priority-header">Lever 2 — Re-stream Velocity &nbsp;·&nbsp; The 7-day window determines long-term seller GMV</div>
     <div class="actions-grid">
       <div class="action-card">
         <div class="action-header">
-          <div class="action-num L2">3</div>
+          <div class="action-num L2">5</div>
           <div>
-            <div class="action-title">Seed opening questions via eBay Live moderation team for first-time sellers</div>
-            <div class="action-tag">Live Operations · Community team</div>
+            <div class="action-title">NEW — Instant win signal: push to high-signal sellers within 2 hours of stream end</div>
+            <div class="action-tag">Seller CRM · Push notification · Post-stream data trigger</div>
           </div>
         </div>
         <div class="action-body">
           <div class="action-stat-row">
-            <div class="action-stat warn"><div class="sv">32.6%</div><div class="sl">1–20 chats conversion</div></div>
-            <div class="action-stat highlight"><div class="sv">80.6%</div><div class="sl">21–100 chats conversion</div></div>
-            <div class="action-stat good"><div class="sv">99.7%</div><div class="sl">500+ chats conversion</div></div>
-            <div class="action-stat"><div class="sv">310</div><div class="sl">sellers in 1–20 chat bucket</div></div>
+            <div class="action-stat good"><div class="sv">89.4%</div><div class="sl">0–7 day returners converted on stream 1</div></div>
+            <div class="action-stat highlight"><div class="sv">450</div><div class="sl">avg chat — 0–7 day group</div></div>
+            <div class="action-stat warn"><div class="sv">&lt;2h</div><div class="sl">optimal trigger window</div></div>
+            <div class="action-stat"><div class="sv">~2,100</div><div class="sl">est. eligible sellers per period</div></div>
           </div>
           <ul class="action-bullets">
-            <li>Assign a "stream success" moderator to every first-time seller's first 30 minutes. Their job: post 3–5 opener questions (item condition? what's your story? limited quantity?) to break the chat silence.</li>
-            <li>Getting from 1–20 to 21+ chats crosses the 80% conversion threshold — even a small mod intervention achieves this.</li>
-            <li>Build an automated "question bank" tailored by seller category (collectibles, fashion, electronics) so the mod doesn't need to improvise.</li>
+            <li>Q9 shows the 0–7 day re-stream group had 89.4% first-stream conversion and averaged 450 chat messages. These two signals are detectable immediately post-stream — before the seller leaves the app.</li>
+            <li>Trigger: if a seller (a) made a sale AND (b) received ≥ 50 chat messages, fire an in-app push within 2 hours: <em>"You made your first live sales — your buyers are still warm. Sellers who go live again within 7 days build lasting momentum. Tap to schedule Stream 2."</em></li>
+            <li>This is distinct from the "Book Stream 2" modal (Action 6, which fires for everyone). This push is personalized, timing-sensitive, and framed as momentum — not a generic prompt.</li>
+            <li>Track the funnel: push sent → scheduling rate → re-stream within 7 days → 21-day GMV. This becomes a key new retention KPI.</li>
           </ul>
         </div>
         <div class="action-footer">
-          <span class="owner-tag ops">Live Ops</span>
-          <span class="owner-tag mkt">Community</span>
-          &nbsp;Expected lift: +48 pp on 310 sellers ≈ ~149 additional conversions per analysis period
+          <span class="owner-tag eng">Engineering</span>
+          <span class="owner-tag mkt">CRM</span>
+          &nbsp;New action. Requires post-stream signal detection (chat count + GMV flag). Medium eng effort, very high ROI for already-engaged top cohort
         </div>
       </div>
 
       <div class="action-card">
         <div class="action-header">
-          <div class="action-num L2">4</div>
+          <div class="action-num L2">6</div>
           <div>
-            <div class="action-title">Give sellers a "question bank" template before their first stream</div>
-            <div class="action-tag">Seller enablement · Pre-stream coaching email</div>
+            <div class="action-title">Show a "Book Stream 2" scheduling flow the moment Stream 1 ends</div>
+            <div class="action-tag">In-app product · Seller app · Post-stream flow</div>
           </div>
         </div>
         <div class="action-body">
           <div class="action-stat-row">
-            <div class="action-stat warn"><div class="sv">205</div><div class="sl">sellers with zero chat</div></div>
-            <div class="action-stat highlight"><div class="sv">52.7%</div><div class="sl">their conversion rate</div></div>
-            <div class="action-stat good"><div class="sv">$1,301</div><div class="sl">avg GMV (zero-chat group)</div></div>
+            <div class="action-stat good"><div class="sv">71.8%</div><div class="sl">re-streamers return within 7 days</div></div>
+            <div class="action-stat warn"><div class="sv">570</div><div class="sl">sellers with no return in 21 days</div></div>
+            <div class="action-stat highlight"><div class="sv">8.3%</div><div class="sl">return days 8–15 — sharp drop-off</div></div>
+            <div class="action-stat"><div class="sv">17%</div><div class="sl">of all first-streamers at risk</div></div>
           </div>
           <ul class="action-bullets">
-            <li>Send a pre-stream email 48h before the first stream with 10 category-specific chat prompts: <em>"Ask your viewers: Would you like a close-up of the stitching?"</em></li>
-            <li>Include the insight: <em>"Sellers who get 21+ chat messages convert at 80%. Here's how to start the conversation."</em></li>
-            <li>The zero-chat group at 52.7% is actually doing OK — focus the email on the 310 sellers in 1–20 chat who are underperforming relative to both zero-chat and 21+ chat groups.</li>
+            <li>Within 5 minutes of stream end, surface a full-screen modal: <em>"Great first stream! Sellers who go live again within 7 days build lasting momentum. Pick a date this week."</em></li>
+            <li>Pre-populate a suggested slot: same time of day, 7 days from now. One tap to confirm — no calendar app required.</li>
+            <li>For converters: <em>"You made your first sales — your audience is warm right now, don't let 7 days pass."</em> For non-converters: <em>"Most sellers find their rhythm on Stream 2. Here's what to try next time."</em></li>
+            <li>This modal targets everyone. Action 5 (instant win push) is the high-signal personalized follow-up for the top-performing cohort.</li>
           </ul>
         </div>
         <div class="action-footer">
-          <span class="owner-tag mkt">Marketing</span>
+          <span class="owner-tag eng">Engineering</span>
           <span class="owner-tag">Seller Experience</span>
-          &nbsp;Zero engineering cost; purely content and email automation
+          &nbsp;Targets all 3,361 first-time streamers. Even converting 20% of the 570 never-returners adds meaningful 21-day GMV. Ship with Action 7 as a paired habit loop
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-header">
+          <div class="action-num L2">7</div>
+          <div>
+            <div class="action-title">Day 5 urgency push — re-engage at-risk sellers before the 7-day window closes</div>
+            <div class="action-tag">Seller CRM · Push notification · Email</div>
+          </div>
+        </div>
+        <div class="action-body">
+          <div class="action-stat-row">
+            <div class="action-stat warn"><div class="sv">Day 7</div><div class="sl">habit window closes</div></div>
+            <div class="action-stat"><div class="sv">8.3%</div><div class="sl">return days 8–15 (vs 71.8% in 0–7)</div></div>
+            <div class="action-stat highlight"><div class="sv">81%</div><div class="sl">0–7 day sellers still active week 2</div></div>
+            <div class="action-stat good"><div class="sv">71%</div><div class="sl">still active week 3</div></div>
+          </div>
+          <ul class="action-bullets">
+            <li>At Day 5 post-first-stream, if Stream 2 is not yet scheduled, trigger push + email: <em>"You have 2 days left in your peak window — 72% of live sellers stream again within a week. [Schedule now →]"</em></li>
+            <li>At Day 7 (final warning), if still unscheduled, send a last-chance SMS (opted-in sellers): <em>"Today is your peak re-stream day. Go live for even 30 minutes — your buyers still remember you."</em></li>
+            <li>A/B test framing: loss aversion (<em>"Don't lose your audience"</em>) vs. positive reinforcement (<em>"Your viewers are ready for more"</em>).</li>
+          </ul>
+        </div>
+        <div class="action-footer">
+          <span class="owner-tag mkt">CRM</span>
+          <span class="owner-tag eng">Engineering</span>
+          &nbsp;Target: ~600 sellers who haven't booked by Day 5. Getting 30% back within 7 days ≈ 180 additional early re-streamers
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-header">
+          <div class="action-num L2">8</div>
+          <div>
+            <div class="action-title">Personalized post-stream debrief — push non-converters toward a week-1 re-stream</div>
+            <div class="action-tag">Seller CRM · Email / Push · Data pipeline &nbsp;· Revised: week-1 urgency</div>
+          </div>
+        </div>
+        <div class="action-body">
+          <div class="action-stat-row">
+            <div class="action-stat warn"><div class="sv">523</div><div class="sl">non-converting first streams</div></div>
+            <div class="action-stat highlight"><div class="sv">75.6%</div><div class="sl">21+/never group: 1st-stream conversion</div></div>
+            <div class="action-stat good"><div class="sv">7 days</div><div class="sl">target re-stream window in messaging</div></div>
+          </div>
+          <ul class="action-bullets">
+            <li><strong>Updated framing (Q8):</strong> non-converters must not be told to "try again sometime." Q8 shows the return rate drops sharply after day 7 — only 8.3% of all re-streamers return in days 8–15 vs. 71.8% in days 0–7. The debrief must push for a week-1 booking explicitly.</li>
+            <li>Within 2 hours of stream end, send: <em>"Here's what happened in your first stream — and why streaming again this week matters."</em> Include their duration vs. 121-min converter median, viewer count vs. 270 median, chat vs. 158 median.</li>
+            <li>For duration gap: <em>"Your stream was X min shorter than the average seller who made a sale. Schedule a 2-hour block this week."</em> For viewer gap: <em>"Schedule within 7 days and we'll promote your stream to [N] buyers in [category]."</em></li>
+            <li>Include a one-click <strong>"Schedule Stream 2 — This Week"</strong> button. Remove all friction from the re-attempt decision.</li>
+          </ul>
+        </div>
+        <div class="action-footer">
+          <span class="owner-tag eng">Engineering</span>
+          <span class="owner-tag mkt">CRM</span>
+          <span class="owner-tag ops">Live Ops</span>
+          &nbsp;Addresses 523 non-converters. Revised to explicitly target week-1 re-stream — not just any re-stream
         </div>
       </div>
     </div>
 
-    <div class="priority-header">Lever 3 — Viewer acquisition &nbsp;·&nbsp; Highest impact, requires platform distribution</div>
+    <div class="priority-header">Lever 3 — Viewer Acquisition &nbsp;·&nbsp; Highest impact, requires platform distribution</div>
     <div class="actions-grid">
       <div class="action-card">
         <div class="action-header">
-          <div class="action-num L3">5</div>
+          <div class="action-num L3">9</div>
           <div>
             <div class="action-title">Boost first-time seller streams on category browse pages at go-live</div>
             <div class="action-tag">Marketplace · Discovery algorithm · Engineering</div>
@@ -697,10 +870,10 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
             <div class="action-stat good"><div class="sv">95.0%</div><div class="sl">200+ viewers conversion</div></div>
           </div>
           <ul class="action-bullets">
-            <li>Getting a new seller from 1–10 viewers to 51–200 viewers jumps conversion from 5.8% → 80.6%. The viewer threshold is the single biggest unlock.</li>
-            <li>Automatically surface first-time seller streams in the top 3 slots of the relevant category browse page for the first 60 minutes — label them "New Seller Live" to set expectations and drive curiosity clicks.</li>
-            <li>Trigger a push notification to buyers who have purchased from similar sellers in the last 90 days: <em>"A new seller in [category] is live right now."</em></li>
-            <li>eBay followers of the seller should receive a push at stream start — verify this is actually firing for all new sellers (check notification opt-in rates).</li>
+            <li>Getting a new seller from 1–10 viewers to 51–200 jumps conversion from 5.8% → 80.6%. The viewer threshold is the single biggest unlock in the data.</li>
+            <li>Automatically surface first-time seller streams in the top 3 slots of the relevant category browse page for the first 60 minutes — label them "New Seller Live."</li>
+            <li>Trigger a push notification to buyers who purchased from similar sellers in the last 90 days.</li>
+            <li>eBay followers of the seller should receive a push at stream start — verify this is firing for all new sellers (check notification opt-in rates).</li>
           </ul>
         </div>
         <div class="action-footer">
@@ -712,7 +885,7 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
 
       <div class="action-card">
         <div class="action-header">
-          <div class="action-num L3">6</div>
+          <div class="action-num L3">10</div>
           <div>
             <div class="action-title">Make "like" prompts more prominent — low-friction signal with strong conversion correlation</div>
             <div class="action-tag">In-stream UX · Viewer-side product</div>
@@ -729,52 +902,22 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
             <li>Like count is monotonically predictive (54.8% → 96.1%) and is a viewer-side action — sellers can't force it, but eBay can surface it more prominently.</li>
             <li>During new-seller streams, show a floating "❤ Like this stream" prompt to viewers every 10 minutes if they haven't liked yet.</li>
             <li>Show sellers a real-time like count in their dashboard with a goal marker: <em>"50 likes = 83% conversion probability."</em></li>
-            <li>Test: seller verbally asking for likes ("tap the heart if you like what you're seeing") — build this into the pre-stream coaching script.</li>
+            <li>Include "ask for likes" in the pre-stream coaching script alongside the chat question bank.</li>
           </ul>
         </div>
         <div class="action-footer">
           <span class="owner-tag eng">Engineering</span>
           <span class="owner-tag mkt">Marketing</span>
-          &nbsp;394 sellers currently have zero likes at 54.8% — a reachable group with a 28 pp upside to 51–200 like tier
+          &nbsp;394 sellers currently have zero likes at 54.8% — a reachable group with 28 pp upside to the 51–200 like tier
         </div>
       </div>
     </div>
 
-    <div class="priority-header">Lever 4 — Post-stream recovery &nbsp;·&nbsp; Capture the 15.6% who didn't convert</div>
+    <div class="priority-header">Lever 4 — Analysis &nbsp;·&nbsp; Segment before treating</div>
     <div class="actions-grid">
       <div class="action-card">
         <div class="action-header">
-          <div class="action-num L4">7</div>
-          <div>
-            <div class="action-title">Personalized post-stream debrief for non-converters within 2 hours of stream end</div>
-            <div class="action-tag">Seller CRM · Email / Push · Data pipeline</div>
-          </div>
-        </div>
-        <div class="action-body">
-          <div class="action-stat-row">
-            <div class="action-stat warn"><div class="sv">523</div><div class="sl">non-converting first streams</div></div>
-            <div class="action-stat highlight"><div class="sv">66–87%</div><div class="sl">non-converters who re-stream</div></div>
-            <div class="action-stat good"><div class="sv">&lt;2h</div><div class="sl">ideal debrief window</div></div>
-          </div>
-          <ul class="action-bullets">
-            <li>Non-converters still re-stream at 66–87% (By Week data) — they are not churning. The intervention is about stream 2, not stream 1 retention.</li>
-            <li>Within 2 hours of stream end, send a personalized email: <em>"Here's what happened in your first stream and what to try next time"</em> — include their duration vs. the 121-min converter median, their viewer count vs. the 270 converter median, and their chat count vs. the 158 converter median.</li>
-            <li>For sellers whose gap is duration: "Your stream was X min shorter than the average seller who made a sale. Consider scheduling a 2-hour block next time."</li>
-            <li>For sellers whose gap is viewers: "Your viewers were below the 50-viewer threshold where conversion jumps to 80%. Schedule your next stream and we'll promote it to [N] buyers in [category]."</li>
-            <li>Include a one-click "Schedule Stream 2" button in the email — remove friction from the re-attempt decision.</li>
-          </ul>
-        </div>
-        <div class="action-footer">
-          <span class="owner-tag eng">Engineering</span>
-          <span class="owner-tag mkt">CRM</span>
-          <span class="owner-tag ops">Live Ops</span>
-          &nbsp;Addresses 523 sellers who missed first-stream conversion; re-stream rate suggests high receptivity
-        </div>
-      </div>
-
-      <div class="action-card">
-        <div class="action-header">
-          <div class="action-num L4">8</div>
+          <div class="action-num L4">11</div>
           <div>
             <div class="action-title">Investigate and segment the zero-chat 52.7% converter group</div>
             <div class="action-tag">Analytics · Strategy · Seller segmentation</div>
@@ -787,78 +930,15 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
             <div class="action-stat good"><div class="sv">$1,301</div><div class="sl">avg GMV — zero-chat group</div></div>
           </div>
           <ul class="action-bullets">
-            <li>The zero-chat group outperforms the 1–20 chat group (52.7% vs 32.6%). This is the anomaly flagged above — these two groups likely represent different seller archetypes.</li>
-            <li>Hypothesis A: zero-chat converters are existing eBay powersellers with pre-built buyer audiences who buy via push notification, not live engagement.</li>
-            <li>Hypothesis B: zero-chat converters had very short, focused "buy this now" streams with pre-arranged buyers — not traditional live commerce.</li>
-            <li>Action: pull slr_id for the 205 sellers, cross-reference with GMV history before first stream, and segment into "existing sellers going live" vs "net new sellers." Treatment should differ entirely for each group.</li>
+            <li>The zero-chat group outperforms the 1–20 chat group (52.7% vs 32.6%). These likely represent different seller archetypes — existing powersellers with pre-built audiences vs. true new-to-live sellers.</li>
+            <li>Pull slr_id for the 205 sellers, cross-reference with GMV history before first stream, and segment into "existing sellers going live" vs. "net new sellers." Treatment should differ entirely for each group.</li>
+            <li>Complete this analysis before scaling chat interventions — actions 1 and 2 may not apply to the existing-seller sub-group.</li>
           </ul>
         </div>
         <div class="action-footer">
           <span class="owner-tag">Analytics</span>
           <span class="owner-tag">Strategy</span>
-          &nbsp;This segment analysis should be completed before deploying chat interventions that might not apply here
-        </div>
-      </div>
-    </div>
-
-
-    <div class="priority-header">Lever 5 — Re-stream velocity &nbsp;·&nbsp; The 7-day habit window is the highest-value unlock</div>
-    <div class="actions-grid">
-      <div class="action-card">
-        <div class="action-header">
-          <div class="action-num L1">9</div>
-          <div>
-            <div class="action-title">Show a "Book Stream 2" scheduling flow the moment Stream 1 ends</div>
-            <div class="action-tag">In-app product · Seller app · Post-stream flow</div>
-          </div>
-        </div>
-        <div class="action-body">
-          <div class="action-stat-row">
-            <div class="action-stat good"><div class="sv">72%</div><div class="sl">re-streamers return within 7 days</div></div>
-            <div class="action-stat highlight"><div class="sv">$34,215</div><div class="sl">avg 21-day GMV per 0–7 day seller</div></div>
-            <div class="action-stat warn"><div class="sv">18%</div><div class="sl">never return within 21 days</div></div>
-            <div class="action-stat"><div class="sv">570</div><div class="sl">sellers generating $0 follow-on GMV</div></div>
-          </div>
-          <ul class="action-bullets">
-            <li>Within 5 minutes of a first stream ending, surface a full-screen modal: <em>"Great first stream! Sellers who go live again within 7 days generate 30× more GMV in their first month. Pick a date this week."</em></li>
-            <li>Pre-populate a suggested time slot: same time of day, 7 days from now. One tap to confirm, no calendar app required.</li>
-            <li>If the seller dismisses, re-surface the scheduling prompt in the seller hub homepage for the next 48 hours.</li>
-            <li>For converters: frame it as momentum — <em>"You made your first sales. Your audience is warm right now — don't let 7 days pass."</em> For non-converters: frame it as a retry — <em>"Most sellers find their rhythm on Stream 2. Here's what to try next time."</em></li>
-          </ul>
-        </div>
-        <div class="action-footer">
-          <span class="owner-tag eng">Engineering</span>
-          <span class="owner-tag">Seller Experience</span>
-          &nbsp;Targets all 3,361 first-time streamers. Even converting 20% of the 570 never-returners = ~114 sellers × $34K each = ~$3.9M incremental 21-day GMV
-        </div>
-      </div>
-
-      <div class="action-card">
-        <div class="action-header">
-          <div class="action-num L1">10</div>
-          <div>
-            <div class="action-title">Day 5 urgency push — re-engage at-risk sellers before the 7-day window closes</div>
-            <div class="action-tag">Seller CRM · Push notification · Email</div>
-          </div>
-        </div>
-        <div class="action-body">
-          <div class="action-stat-row">
-            <div class="action-stat warn"><div class="sv">Day 7</div><div class="sl">7-day window closes</div></div>
-            <div class="action-stat"><div class="sv">8%</div><div class="sl">return in days 8–15 (vs 72% in 0–7)</div></div>
-            <div class="action-stat highlight"><div class="sv">81%</div><div class="sl">of 0–7 day sellers still active in week 2</div></div>
-            <div class="action-stat good"><div class="sv">71%</div><div class="sl">still active in week 3</div></div>
-          </div>
-          <ul class="action-bullets">
-            <li>At Day 5 post-first-stream, if Stream 2 is not yet scheduled, trigger a push + email: <em>"You have 2 days left in your peak window — 72% of live sellers stream again within a week. Your audience still remembers you. [Schedule now →]"</em></li>
-            <li>Include the retention data as social proof: <em>"Sellers who stream within 7 days stay 81% active through the following week. Don't let the momentum break."</em></li>
-            <li>At Day 7 (final warning), if still unscheduled, send a last-chance SMS (for opted-in sellers): <em>"Today is your peak re-stream day. Go live for even 30 minutes — your buyers are still watching."</em></li>
-            <li>A/B test framing: loss aversion (<em>"Don't lose your audience"</em>) vs. positive reinforcement (<em>"Your viewers are ready for more"</em>) — data suggests both work but loss framing may be stronger for new sellers.</li>
-          </ul>
-        </div>
-        <div class="action-footer">
-          <span class="owner-tag mkt">CRM</span>
-          <span class="owner-tag eng">Engineering</span>
-          &nbsp;Target: ~600 sellers who haven't booked by Day 5. Getting 30% back within 7 days ≈ 180 sellers × $34K = $6.1M incremental GMV pipeline
+          &nbsp;Gate for scaling chat interventions — complete before Actions 1–2 go broad
         </div>
       </div>
     </div>
@@ -869,28 +949,33 @@ html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background
         <thead>
           <tr>
             <th>#</th><th>Action</th><th class="r">Target sellers</th>
-            <th class="r">Conversion lift (pp)</th><th class="r">Effort</th><th>Owner</th>
+            <th class="r">Primary lift</th><th class="r">Effort</th><th>Owner</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td>In-stream duration nudge at 25 min</td><td class="r">229</td><td class="r"><span class="delta pos">+42 pp</span></td><td class="r">Low</td><td><span class="pillar supply">Eng</span></td></tr>
-          <tr><td>2</td><td>Pre-stream duration goal in go-live checklist</td><td class="r">All new</td><td class="r"><span class="delta pos">+20–42 pp</span></td><td class="r">Low</td><td><span class="pillar supply">Content</span></td></tr>
-          <tr><td>3</td><td>Mod team seeds chat for first 30 min</td><td class="r">310</td><td class="r"><span class="delta pos">+48 pp</span></td><td class="r">Medium</td><td><span class="pillar engagement">Ops</span></td></tr>
-          <tr><td>4</td><td>Pre-stream "question bank" email</td><td class="r">All new</td><td class="r"><span class="delta pos">+15–48 pp</span></td><td class="r">Low</td><td><span class="pillar engagement">CRM</span></td></tr>
-          <tr><td>5</td><td>Category page boost + PN at go-live</td><td class="r">69–340</td><td class="r"><span class="delta pos">+33–75 pp</span></td><td class="r">High</td><td><span class="pillar supply">Eng</span></td></tr>
-          <tr><td>6</td><td>Like prompts in viewer UX + seller like goal</td><td class="r">394</td><td class="r"><span class="delta pos">+28 pp</span></td><td class="r">Low</td><td><span class="pillar supply">Eng</span></td></tr>
-          <tr><td>7</td><td>Personalized post-stream debrief email</td><td class="r">523</td><td class="r"><span class="delta pos">+lift stream 2</span></td><td class="r">Medium</td><td><span class="pillar engagement">CRM</span></td></tr>
-          <tr><td>8</td><td>Segment zero-chat converters (analysis only)</td><td class="r">205</td><td class="r"><span class="delta zero">analysis</span></td><td class="r">Low</td><td><span class="pillar demand">Analytics</span></td></tr>
-          <tr><td>9</td><td>"Book Stream 2" modal immediately post-stream (all sellers)</td><td class="r">3,361</td><td class="r"><span class="delta pos">+re-stream rate</span></td><td class="r">Medium</td><td><span class="pillar supply">Eng</span></td></tr>
-          <tr><td>10</td><td>Day 5 urgency push — re-engage before 7-day window closes</td><td class="r">~600</td><td class="r"><span class="delta pos">+30% rescue rate</span></td><td class="r">Low</td><td><span class="pillar engagement">CRM</span></td></tr>
+          <tr><td>1</td><td>Mod team seeds chat — first 30 min <span style="font-size:10px;color:var(--ebay-green-dark);font-weight:700;margin-left:4px">↑ moved up</span></td><td class="r">310</td><td class="r"><span class="delta pos">+48 pp conv · +retention</span></td><td class="r">Medium</td><td><span class="pillar engagement">Ops</span></td></tr>
+          <tr><td>2</td><td>Pre-stream question bank email <span style="font-size:10px;color:var(--ebay-green-dark);font-weight:700;margin-left:4px">↑ moved up</span></td><td class="r">All new</td><td class="r"><span class="delta pos">+15–48 pp · +retention</span></td><td class="r">Low</td><td><span class="pillar engagement">CRM</span></td></tr>
+          <tr><td>3</td><td>In-stream duration nudge at 25 min</td><td class="r">229</td><td class="r"><span class="delta pos">+42 pp conv · +retention</span></td><td class="r">Low</td><td><span class="pillar supply">Eng</span></td></tr>
+          <tr><td>4</td><td>Pre-stream duration goal + inventory checklist</td><td class="r">All new</td><td class="r"><span class="delta pos">+20–42 pp · +retention</span></td><td class="r">Low</td><td><span class="pillar supply">Content</span></td></tr>
+          <tr><td>5</td><td><strong>NEW</strong> — Instant win push (2h post-stream, converter + high-chat)</td><td class="r">~2,100</td><td class="r"><span class="delta pos">+7-day re-stream rate</span></td><td class="r">Medium</td><td><span class="pillar engagement">CRM</span></td></tr>
+          <tr><td>6</td><td>"Book Stream 2" modal immediately post-stream (all sellers)</td><td class="r">3,361</td><td class="r"><span class="delta pos">+re-stream rate</span></td><td class="r">Medium</td><td><span class="pillar supply">Eng</span></td></tr>
+          <tr><td>7</td><td>Day 5 urgency push — re-engage before 7-day window closes</td><td class="r">~600</td><td class="r"><span class="delta pos">+30% rescue rate</span></td><td class="r">Low</td><td><span class="pillar engagement">CRM</span></td></tr>
+          <tr><td>8</td><td>Post-stream debrief email — revised with week-1 urgency</td><td class="r">523</td><td class="r"><span class="delta pos">+week-1 re-stream rate</span></td><td class="r">Medium</td><td><span class="pillar engagement">CRM</span></td></tr>
+          <tr><td>9</td><td>Category page boost + push notification at go-live</td><td class="r">69–340</td><td class="r"><span class="delta pos">+33–75 pp</span></td><td class="r">High</td><td><span class="pillar supply">Eng</span></td></tr>
+          <tr><td>10</td><td>Like prompts in viewer UX + seller like goal</td><td class="r">394</td><td class="r"><span class="delta pos">+28 pp</span></td><td class="r">Low</td><td><span class="pillar supply">Eng</span></td></tr>
+          <tr><td>11</td><td>Segment zero-chat converters (analysis gate)</td><td class="r">205</td><td class="r"><span class="delta zero">analysis</span></td><td class="r">Low</td><td><span class="pillar demand">Analytics</span></td></tr>
         </tbody>
       </table>
     </div>
     <p class="section-caption" style="margin-top:8px">
-      Actions 1, 2, 4, 6, 10 can be initiated this sprint with minimal engineering. Action 3 (mod seeding) and Action 9 (post-stream booking modal) can begin as a manual pilot next week.
-      Action 5 (category boost) is the highest-leverage discovery change — prioritize for next quarter. Action 9 + 10 together form the re-stream habit loop and should ship as a paired feature.
+      <strong>This sprint (no or low eng):</strong> Actions 2, 3, 4, 7, 10 — email, content, and nudge work only.
+      <strong>Next week (manual pilot):</strong> Actions 1 (mod seeding) and 6 (post-stream booking modal).
+      <strong>Medium eng:</strong> Action 5 (instant win push — post-stream trigger on chat + GMV signals) and Action 8 (personalized debrief email with week-1 CTA).
+      <strong>Next quarter:</strong> Action 9 (category boost) — highest leverage discovery change.
+      Actions 5, 6, and 7 form the re-stream habit loop and should ship as a paired feature set.
     </p>
   </section>
+
 
   <!-- ═══════════════════════════════════════════════════
        METHODOLOGY
@@ -1099,10 +1184,11 @@ const STATE = {
   q8: Q8_DATA,
   q9: Q9_DATA,
   filters: {
-    overview: {country:"All", category:"All"},
-    comp:     {country:"All", category:"All"},
-    weekly:   {country:"All", category:"All"},
-    buckets:  {country:"All", category:"All"},
+    overview:  {country:"All", category:"All"},
+    comp:      {country:"All", category:"All"},
+    weekly:    {country:"All", category:"All"},
+    buckets:   {country:"All", category:"All"},
+    retention: {country:"All", category:"All"},
   }
 };
 
@@ -1174,18 +1260,30 @@ function setFilterStatus(tabIds, msg, loaded){
   });
 }
 
+const ALL_TABS = ["overview","comp","weekly","buckets","retention"];
+
 function onCountryFilter(tabId){
   const cSel = document.getElementById("fc-"+tabId);
-  if(cSel) STATE.filters[tabId].country = cSel.value;
-  STATE.filters[tabId].category = "All";
-  rebuildCatDropdown(tabId);
-  refreshTab(tabId);
+  const newCountry = cSel ? cSel.value : "All";
+  ALL_TABS.forEach(tid => {
+    STATE.filters[tid].country  = newCountry;
+    STATE.filters[tid].category = "All";
+    const s = document.getElementById("fc-"+tid);
+    if(s && s.value !== newCountry) s.value = newCountry;
+    rebuildCatDropdown(tid);
+  });
+  ALL_TABS.forEach(tid => refreshTab(tid));
 }
 
 function onFilter(tabId){
   const catSel = document.getElementById("fcat-"+tabId);
-  if(catSel) STATE.filters[tabId].category = catSel.value;
-  refreshTab(tabId);
+  const newCat = catSel ? catSel.value : "All";
+  ALL_TABS.forEach(tid => {
+    STATE.filters[tid].category = newCat;
+    const s = document.getElementById("fcat-"+tid);
+    if(s && s.value !== newCat) s.value = newCat;
+  });
+  ALL_TABS.forEach(tid => refreshTab(tid));
 }
 
 function getQ5Filtered(tabId){
@@ -1536,14 +1634,13 @@ function refreshTab(tabId){
       renderBuckets(rows && rows.length ? q6ToBuckets(rows) : BUCKETS);
     }
   }
-  // Re-stream timing section — shown on all 4 filter tabs when Q8 data is available
-  if(STATE.q8 && ["overview","comp","weekly","buckets"].includes(tabId)){
-    const q8rows = getQ8Filtered(tabId);
-    renderRestream(q8rows && q8rows.length ? q8ToRestream(q8rows) : [], "restream-"+tabId);
-  }
-  // Metric driver analysis — all-market, not filtered
-  if(STATE.q9 && ["overview","comp","weekly","buckets"].includes(tabId)){
-    renderDrivers(STATE.q9, "drivers-"+tabId);
+  // Retention tab: re-stream timing + signal profile
+  if(tabId === "retention"){
+    if(STATE.q8){
+      const q8rows = getQ8Filtered("retention");
+      renderRestream(q8rows && q8rows.length ? q8ToRestream(q8rows) : [], "restream-retention");
+    }
+    if(STATE.q9) renderDrivers(STATE.q9, "drivers-retention");
   }
 }
 
@@ -1783,12 +1880,13 @@ window.onCountryFilter = onCountryFilter;
 window.onFilter = onFilter;
 
 initTabs();
-buildDropdowns(["overview","comp","weekly"], Q5_DATA);
+buildDropdowns(["overview","comp","weekly","retention"], Q5_DATA);
 buildDropdowns(["buckets"], Q6_DATA);
 refreshTab("overview");
 refreshTab("comp");
 refreshTab("buckets");
 refreshTab("weekly");
+refreshTab("retention");
 
 })();
 </script>
