@@ -1,0 +1,6 @@
+# Ignore everything
+*
+
+# Except the dashboard HTML
+!.gitignore
+!Live_DS_First-Stream-GMV-Conversion_20260616.html
